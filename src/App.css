@@ -1,0 +1,7 @@
+*{
+    margin: 0;
+}
+
+.MuiDrawer-root{
+    backdrop-filter: none !important;
+}

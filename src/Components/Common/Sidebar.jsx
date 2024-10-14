@@ -9,6 +9,19 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Link } from 'react-router-dom';
+
+ const sidebars=[
+  {
+  name:"Dashboard",
+  href:"/"
+},
+{
+  name:"Projects",
+  href:"/projects"
+},
+]
+
 
 export default function Sidebar({ Open, toggleSidebar }) {
 
@@ -22,17 +35,22 @@ export default function Sidebar({ Open, toggleSidebar }) {
   const DrawerList = (
     <Box sx={{  height:100 ,width: 250,
       '&. MuiDrawer-paper':{
-        marginTop:'3rem'
+        marginTop:'3rem',
+      },
+      '&. MuiBackdrop-root':{
+        opacity:'0!important'
+
       }
      }}  role="presentation" onClick={toggleSidebar}>
       <List>
-        {['Dashboard', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {sidebars.map((data, index) => (
+          <ListItem key={index} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+             <Link style={{textDecoration:'none',color:'black'}} to={data.href}> <ListItemText primary={data.name} /></Link>
+             
             </ListItemButton>
           </ListItem>
         ))}
@@ -61,6 +79,7 @@ export default function Sidebar({ Open, toggleSidebar }) {
     <Drawer PaperProps={
       {
         sx:{
+          backdropFilter : 'none',
           marginTop:'4.6rem'
         }
       }

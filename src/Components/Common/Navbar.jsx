@@ -58,9 +58,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
 
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
+    console.log("here");
+    
     setSidebarOpen(!isSidebarOpen);
   };
 
@@ -171,8 +173,8 @@ export default function Navbar() {
         backgroundColor:'red'
       }
     }}>
-      <AppBar position="static">
-        <Toolbar>
+      <AppBar position="static"  >
+        <Toolbar className="nav-test">
           <IconButton
             onClick={toggleSidebar}
             size="large"
