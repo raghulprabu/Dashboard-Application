@@ -1,0 +1,10 @@
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.btn-links{
+    text-decoration: none;
+    color: white;
+
+}

@@ -28,7 +28,7 @@ export default function Cards() {
   return (
     <Stack sx={{ display: 'flex', justifyContent: 'space-between' }} direction="row" spacing={2}>
 
-      <DemoPaper sx={{ backgroundColor: 'AliceBlue' }} square={false}>
+      <DemoPaper sx={{ backgroundColor: 'powderblue	' }} square={false}>
         <AccountCircleOutlined style={{ color: 'blue', fontSize: '40' }} />
         <h1>40</h1>
         <h4>Users</h4>
@@ -46,8 +46,8 @@ export default function Cards() {
         <h4> Project User</h4>
       </DemoPaper>
 
-      <DemoPaper  sx={{backgroundColor:'LightYellow	'}}square>
-        <GroupsOutlinedIcon style={{ color: "yellow", fontSize: '40' }} />
+      <DemoPaper  sx={{backgroundColor:'wheat'}}square>
+        <GroupsOutlinedIcon style={{ color: "gold", fontSize: '40' }} />
         <h1>43</h1>
         <h4>Count</h4>
       </DemoPaper>
