@@ -1,0 +1,14 @@
+.Create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8%;
+    background-color: rgb(245, 245, 245);
+    width: 25%;
+    border: 3px solid rgb(161, 156, 224);
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px;
+
+}
