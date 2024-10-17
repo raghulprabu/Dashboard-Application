@@ -1,50 +1,83 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button'; 
-import "./CreateUser.css"
+import React, { useState } from 'react';
+import './Application.css';
+import axios from 'axios';
 
-export default function CalendarTextField() {
-  const [value, setValue] = React.useState(null);
+const CreateUser = ({ onSubmit,setModalOpen }) => {
+  const [user, setUser] = useState('');
+  const [project, setProject] = useState('');
+  const [date, setDate] = useState('');
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log({user,project,date})
+    const res = await axios.post("https://66ebfac82b6cf2b89c5cb787.mockapi.io/bootlabs/users",{user,project,date});
+    setModalOpen(false)
+    window.location.reload()
+    // onSubmit({ user, project, date });
+  };
+
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-     <div className='Create'>
-      <Box
-        component="form"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '50vh',
-          '& > :not(style)': { m: 2, width: '30ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField id="filled-basic" label="User" variant="filled" />
-        <TextField id="standard-basic" label="project" variant="standard" />
-        <DatePicker
-          label="Outlined with Calendar"
-          value={value}
-          onChange={(newValue) => setValue(newValue)}
-          renderInput={(params) => <TextField {...params} variant="outlined" />}
-        />
-      </Box>
-      <Stack direction="row" spacing={2}>
-      <Button variant="contained" color="success">
-        Create
-      </Button>
-      <Button variant="outlined" color="error">
-        Cancel
-      </Button>
-    </Stack>
+    <div className='model'>
+      <div className='model-content'>
+        <h2>User Record</h2>
+        <span className='close' onClick={()=>setModalOpen(false)}>
+          &times;
+        </span>
+        <form onSubmit={handleSubmit}>
+          <div className='input-group'>
+            <label>User:</label>
+            <input
+              type='text'
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <label>Project:</label>
+            <input
+              type='text'
+              value={project}
+              onChange={(e) => setProject(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <label>Date:</label>
+            <input
+              type='date'
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+          <button type='submit' className='btn blue'>Submit</button>
+        </form>
       </div>
-    </LocalizationProvider>
+    </div>
   );
-}
+};
+
+export default CreateUser;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

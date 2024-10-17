@@ -4,16 +4,17 @@ import React from 'react';
 import "./App.css"
 import PrimarySearchAppBar from './Components/Common/Navbar'
 import AllRoutes from './Routes/AllRoutes';
+import UserContext from './context/UserContext';
 
 function App() {
   return (
-    <>
+    <UserContext>
       {/* <RouterProvider router={router} /> */}
 
       <PrimarySearchAppBar />
       <AllRoutes />
 
-    </>
+    </UserContext>
   );
 }
 
